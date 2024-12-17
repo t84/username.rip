@@ -75,13 +75,12 @@
       function updateEmoji() {
         const newEmoji = getRandomEmoji();
         emojiElement.textContent = newEmoji;
-        twemoji.parse(emojiElement); 
       }
 
       function incrementEmojiCounter() {
         totalEmojisPressed++;
         emojiCounter.textContent = `Total Emojis: ${totalEmojisPressed}`;
-        localStorage.setItem('totalEmojisPressed', totalEmojisPressed); // Save to localStorage
+        localStorage.setItem('totalEmojisPressed', totalEmojisPressed);
         console.log(`Updated counter: ${totalEmojisPressed}`);
       }
 
@@ -95,7 +94,6 @@
         updateEmoji();
       });
 
-      twemoji.parse(document.body);
     }).catch(error => {
       console.error("Failed to load emojis: ", error);
     });
