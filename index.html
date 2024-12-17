@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Im on top!</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #fbc2eb 100%);
+      color: #fff;
+      overflow: hidden;
+    }
+
+    #emoji {
+      font-size: 6rem;
+      cursor: pointer;
+      user-select: none;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    #emoji-counter {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div id="emoji">😀</div>
+  <div id="emoji-counter">Total Emojis: 0</div>
+
+  <script>
+    const emojiElement = document.getElementById('emoji');
+    const emojiCounter = document.getElementById('emoji-counter');
+
+    let totalEmojisPressed = parseInt(localStorage.getItem('totalEmojisPressed')) || 0;
+    emojiCounter.textContent = `Total Emojis: ${totalEmojisPressed}`;
+
+    async function loadEmojis() {
+      const response = await fetch('emojis.json'); 
+      const emojis = await response.json(); 
+      return emojis;
+    }
+
+    let emojisList = [];
+    loadEmojis().then(emojis => {
+      emojisList = emojis; 
+
+      function getRandomEmoji() {
+        const randomIndex = Math.floor(Math.random() * emojisList.length);
+        return emojisList[randomIndex];
+      }
+
+      function updateEmoji() {
+        const newEmoji = getRandomEmoji();
+        emojiElement.textContent = newEmoji;
+        twemoji.parse(emojiElement); 
+      }
+
+      function incrementEmojiCounter() {
+        totalEmojisPressed++;
+        emojiCounter.textContent = `Total Emojis: ${totalEmojisPressed}`;
+        localStorage.setItem('totalEmojisPressed', totalEmojisPressed); // Save to localStorage
+        console.log(`Updated counter: ${totalEmojisPressed}`);
+      }
+
+      setInterval(() => {
+        incrementEmojiCounter();
+        updateEmoji();
+      }, 2000);
+
+      emojiElement.addEventListener('click', () => {
+        incrementEmojiCounter();
+        updateEmoji();
+      });
+
+      twemoji.parse(document.body);
+    }).catch(error => {
+      console.error("Failed to load emojis: ", error);
+    });
+
+  </script>
+</body>
+</html>
