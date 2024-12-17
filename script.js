@@ -1,6 +1,8 @@
 function generateStars() {
     const starfield = document.getElementById('starfield');
     
+    starfield.innerHTML = '';
+    
     const starCount = 200;
     
     for (let i = 0; i < starCount; i++) {
@@ -26,3 +28,5 @@ function generateStars() {
 }
 
 window.onload = generateStars;
+
+window.onresize = generateStars;
