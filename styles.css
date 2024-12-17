@@ -85,16 +85,19 @@ h1 {
 .footer {
     margin-top: 20px;
     font-size: 14px;
-    color: #ddd;
+    color: #9b59b6;
+    animation: footerColorChange 15s infinite;
 }
 
 .footer a {
     color: #9b59b6;
     text-decoration: none;
+    animation: footerLinkColorChange 15s infinite;
 }
 
 .footer a:hover {
     text-decoration: underline;
+    color: #8e44ad;
 }
 
 .page-footer {
@@ -103,11 +106,53 @@ h1 {
     width: 100%;
     text-align: center;
     font-size: 14px;
-    color: #ddd;
+    color: white;
 }
 
 .page-footer p {
     margin: 0;
+}
+
+@keyframes footerColorChange {
+    0% {
+        color: #9b59b6;
+    }
+    20% {
+        color: #8e44ad;
+    }
+    40% {
+        color: #3498db;
+    }
+    60% {
+        color: #f39c12;
+    }
+    80% {
+        color: #e74c3c;
+    }
+    100% {
+        color: #9b59b6;
+    }
+}
+
+@keyframes footerLinkColorChange {
+    0% {
+        color: #9b59b6;
+    }
+    20% {
+        color: #8e44ad;
+    }
+    40% {
+        color: #3498db;
+    }
+    60% {
+        color: #f39c12;
+    }
+    80% {
+        color: #e74c3c;
+    }
+    100% {
+        color: #9b59b6;
+    }
 }
 
 @keyframes colorChange {
