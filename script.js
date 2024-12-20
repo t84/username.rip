@@ -31,5 +31,28 @@ function generateStars() {
     starfield.appendChild(fragment);
 }
 
+var titleText = "username";
+var displayText = "";
+var isTyping = true;
+var index = 0;
+
+function loop() {
+    if (isTyping) {
+        displayText += titleText[index++];
+        if (index === titleText.length) {
+            isTyping = false;
+        }
+    } else {
+        displayText = displayText.slice(0, -1);
+        if (displayText.length === 0) {
+            isTyping = true;
+            index = 0;
+        }
+    }
+    document.title = displayText;
+}
+
+setInterval(loop, 200);
+
 window.onload = generateStars;
 window.onresize = generateStars;
