@@ -1,40 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>username.rip</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="shigeo.png" type="image/png">
-
 </head>
+
 <body>
 
-<div class="wrapper">
-    <div class="bio-container">
-        <img class="profile-img" src="shigeo.png" alt="Your Image">
-        <h1>Hello I'm username!</h1>
-        <p class="bio">I like watching anime, playing games, speedrunning, listening to music, and programming.</p>
-
-        <div class="links">
-            <a target="_blank" class="link" href="https://myanimelist.net/profile/Joshua">My Anime List</a>
-            <a target="_blank" class="link" href="https://github.com/t84">Github</a>
-            <a target="_blank" class="link" href="https://namemc.com/profile/e250b7916281468e9810810386ff2fa7">Minecraft</a>
-            <a target="_blank" class="link" href="https://www.speedrun.com/users/username63">Speedrun.com</a>
-        </div>
-
-        <footer class="footer">
-            <p><a href="mailto:hello@username.rip">hello@username.rip</a></p>
-        </footer>
+    <div style="background-color: black;" id="overlay">
+        <div id="overlay-text">Click to open</div>
     </div>
-</div>
 
-<footer class="page-footer">
-    <p>&copy; 2024</p>
-</footer>
+    <div class="wrapper">
+        <div class="bio-container">
+            <img class="profile-img" src="shigeo.png" alt="Your Image">
+            <h1>Hello I'm username!</h1>
+            <p class="bio">I like watching anime, playing games, speedrunning, listening to music, and programming.</p>
 
-<div id="starfield"></div>
+            <div class="links">
+                <a target="_blank" class="link" href="https://myanimelist.net/profile/Joshua">My Anime List</a>
+                <a target="_blank" class="link" href="https://github.com/t84">Github</a>
+                <a target="_blank" class="link"
+                    href="https://namemc.com/profile/e250b7916281468e9810810386ff2fa7">Minecraft</a>
+                <a target="_blank" class="link" href="https://www.speedrun.com/users/username63">Speedrun.com</a>
+            </div>
 
-<script src="script.js"></script>
+            <footer class="footer">
+                <p><a href="mailto:hello@username.rip">hello@username.rip</a></p>
+            </footer>
+        </div>
+        <audio id="background-music" src="Zombie Shit.m4a"></audio>
+
+        <div class="audio-controls">
+            <button id="mute-unmute" class="mute-button">🔊</button> <!-- Mute emoji by default -->
+            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
+        </div>
+    </div>
+
+    <footer class="page-footer">
+        <p>&copy; 2024</p>
+    </footer>
+
+    <div id="starfield"></div>
+
+
+
+    <script src="script.js"></script>
 </body>
+
 </html>
