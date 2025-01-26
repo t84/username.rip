@@ -1,10 +1,3 @@
-document.getElementById('overlay').addEventListener('click', function() {
-    this.style.display = 'none';
-    const music = document.getElementById('background-music');
-    music.play();
-    music.volume = 0.3; 
-});
-
 function generateStars() {
     const starfield = document.getElementById('starfield');
     starfield.innerHTML = '';
@@ -38,46 +31,6 @@ function generateStars() {
     starfield.appendChild(fragment);
 }
 
-var titleText = "username";
-var displayText = "";
-var isTyping = true;
-var index = 0;
-
-function loop() {
-    if (isTyping) {
-        displayText += titleText[index++];
-        if (index === titleText.length) {
-            isTyping = false;
-        }
-    } else {
-        displayText = displayText.slice(0, -1);
-        if (displayText.length === 0) {
-            isTyping = true;
-            index = 0;
-        }
-    }
-    document.title = displayText;
-}
-
-setInterval(loop, 200);
 
 window.onload = generateStars;
 window.onresize = generateStars;
-
-const music = document.getElementById('background-music');
-const muteButton = document.getElementById('mute-unmute');
-const volumeSlider = document.getElementById('volume-slider');
-
-muteButton.addEventListener('click', () => {
-    if (music.volume > 0) {
-        music.volume = 0;
-        muteButton.textContent = '🔇';
-    } else {
-        music.volume = volumeSlider.value;
-        muteButton.textContent = '🔊';
-    }
-});
-
-volumeSlider.addEventListener('input', (event) => {
-    music.volume = event.target.value;
-});
